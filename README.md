@@ -37,6 +37,7 @@ Pass the same target dir you installed to, e.g. `./install.sh --uninstall /usr/l
 | `grid_clicker.sh` | Click through a list of points, one every N seconds, looping. Toggle. |
 | `coords.sh` | Live cursor-position tracker — hover a spot to read its `x,y`. |
 | `stop_all.sh` | Panic button — kills every clicker/jiggler and clears pidfiles. |
+| `list_privileges.sh` | Read-only audit — lists apps with Accessibility, Input Monitoring, Screen Recording, or Full Disk Access. |
 
 Edit the `SETTINGS` block at the top of each script (start position, distance,
 interval, grid points).
@@ -131,6 +132,25 @@ skhd --stop-service
 brew uninstall skhd
 rm -f ~/.config/skhd/skhdrc      # optional: delete the hotkey config
 ```
+
+### Auditing what has these privileges
+
+Accessibility, Input Monitoring, Screen Recording, and Full Disk Access are the
+most powerful permissions on macOS — anything holding them can watch your
+keystrokes or control the machine. To see everything that currently has them:
+
+```sh
+./list_privileges.sh    # read-only; prompts for sudo to read the system database
+```
+
+It reads Apple's TCC database and changes nothing. Note on how macOS works here:
+
+- **Granting** one of these is **GUI-only by design** — there is no `sudo`/CLI
+  command to *add* an app to Accessibility or Input Monitoring. Apple blocks it
+  so software can't self-grant keystroke access; a human must click the toggle.
+- **Removing** one *is* scriptable via Apple's built-in `tccutil reset`
+  (see the skhd example above) — taking a privilege away is safe, so it's allowed.
+- `tccutil` is Apple's own signed tool (`/usr/bin/tccutil`), not third-party.
 
 ## Also included
 
