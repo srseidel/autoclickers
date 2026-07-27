@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Editor cruft
+*.swp
+*~
+
+# Local runtime state (pidfiles live in /tmp, but just in case)
+*.pid

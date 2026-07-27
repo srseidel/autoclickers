@@ -1,0 +1,20 @@
+# ============================================================
+# skhd hotkeys for autoclickers
+# ------------------------------------------------------------
+# The install script copies this to ~/.config/skhd/skhdrc.
+# Each line: <hotkey> : <command>
+# Edit the hotkeys or the {{BIN}} paths as you like, then run:
+#     skhd --reload
+# ------------------------------------------------------------
+# Key names: cmd alt ctrl shift, then " - " and the key.
+# Some keys need hex codes: period = 0x2F, comma = 0x2B.
+# ============================================================
+
+# Start/stop the mouse jiggler        (ctrl+alt+cmd + J)
+ctrl + alt + cmd - j : {{BIN}}/mouse_jiggler_toggle.sh
+
+# Start/stop the grid clicker         (ctrl+alt+cmd + G)
+ctrl + alt + cmd - g : {{BIN}}/grid_clicker.sh
+
+# Panic button — stop everything      (ctrl+alt+cmd + .)
+ctrl + alt + cmd - 0x2F : {{BIN}}/stop_all.sh
