@@ -7,14 +7,16 @@
 #     skhd --reload
 # ------------------------------------------------------------
 # Key names: cmd alt ctrl shift, then " - " and the key.
+# NOTE: skhd's "alt" is the Mac Option (⌥) key — keep the keyword "alt"
+# in the binding lines below; only the human labels say Option.
 # Some keys need hex codes: period = 0x2F, comma = 0x2B.
 # ============================================================
 
-# Start/stop the mouse jiggler        (ctrl+alt+cmd + J)
+# Start/stop the mouse jiggler        (⌃⌥⌘ + J   = Control-Option-Command-J)
 ctrl + alt + cmd - j : {{BIN}}/mouse_jiggler_toggle.sh
 
-# Start/stop the grid clicker         (ctrl+alt+cmd + G)
+# Start/stop the grid clicker         (⌃⌥⌘ + G   = Control-Option-Command-G)
 ctrl + alt + cmd - g : {{BIN}}/grid_clicker.sh
 
-# Panic button — stop everything      (ctrl+alt+cmd + .)
+# Panic button — stop everything      (⌃⌥⌘ + .   = Control-Option-Command-period)
 ctrl + alt + cmd - 0x2F : {{BIN}}/stop_all.sh
