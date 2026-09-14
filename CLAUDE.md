@@ -18,6 +18,8 @@ Personal-use utility; currently working and committed to git.
 Read these at session start:
 - ~/.claude/projects/-Users-seidel-Documents-git-autoclickers/memory/MEMORY.md
 - ~/.claude/projects/-Users-seidel-Documents-git-autoclickers/memory/project_current_state.md
+- ScohBrain/Projects/autoclickers/Overview.md — also check its "Open
+  questions" section for anything left by another project's agent
 
 ## Cross-project patterns
 Read /Users/seidel/.claude/GLOBAL-PATTERNS.md — especially the shell/bash and macOS sections.

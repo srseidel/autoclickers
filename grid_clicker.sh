@@ -23,7 +23,7 @@ POINTS=(
     "990,658"
 )
 
-INTERVAL_SECONDS=8      # seconds between each click
+INTERVAL_SECONDS=30      # seconds between each click
 # ============================================================
 
 CLICLICK="$(command -v cliclick || echo /opt/homebrew/bin/cliclick)"

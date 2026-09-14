@@ -4,6 +4,28 @@ Small macOS mouse-automation scripts: a mouse jiggler, a grid clicker, a
 coordinate finder, and a panic "stop all" button. Hotkeys are wired up with
 [skhd](https://github.com/koekeishiya/skhd) from a plain-text config.
 
+> ## ⚠️ Known issue: hotkeys currently DO NOT work
+>
+> The scripts themselves run fine (start them from Terminal). The **skhd
+> hotkeys are not functional** right now, and it's a macOS security limitation,
+> not a bug in these scripts.
+>
+> **What's happening:** skhd needs **Accessibility** and **Input Monitoring**
+> permission to capture global hotkeys. To grant those, macOS makes you pick the
+> skhd binary in System Settings → Privacy & Security. The binary lives at
+> `/opt/homebrew/bin/skhd`, but **`/opt` carries the macOS `hidden` filesystem
+> flag** (Apple sets this on system dirs). Finder's file picker obeys that flag
+> and refuses to show `/opt`, so we cannot navigate to or select the binary in
+> the permission dialog — and System Settings' search only matches *setting
+> names*, not files, so searching "skhd" finds nothing either.
+>
+> **Net effect:** skhd can't be granted the permission it needs, so the hotkeys
+> don't fire. The intended workaround (`⌘⇧G` "Go to Folder" in the picker, or
+> letting a keypress trigger the system prompt) is documented under
+> [skhd service & permissions](#skhd-service--permissions) — but on this machine
+> it hasn't succeeded yet, so **for now, launch the scripts manually** (see
+> [Scripts](#scripts)) rather than via hotkey.
+
 ## Requirements
 
 ```sh
@@ -35,6 +57,7 @@ Pass the same target dir you installed to, e.g. `./install.sh --uninstall /usr/l
 |---|---|
 | `mouse_jiggler_toggle.sh` | Bounce the mouse back and forth. Run to start, run again to stop. |
 | `grid_clicker.sh` | Click through a list of points, one every N seconds, looping. Toggle. |
+| `click_here_toggle.sh` | Left-click wherever the cursor is, once every second, while enabled. Runs in Terminal — press [space] to start/stop, [q] to quit. |
 | `coords.sh` | Live cursor-position tracker — hover a spot to read its `x,y`. |
 | `stop_all.sh` | Panic button — kills every clicker/jiggler and clears pidfiles. |
 | `list_privileges.sh` | Read-only audit — lists apps with Accessibility, Input Monitoring, Screen Recording, or Full Disk Access. |
@@ -59,6 +82,9 @@ Defined in [`skhdrc`](./skhdrc) (installed to `~/.config/skhd/skhdrc`):
 | ⌃⌥⌘ + J (Control-Option-Command-J) | toggle mouse jiggler |
 | ⌃⌥⌘ + G (Control-Option-Command-G) | toggle grid clicker |
 | ⌃⌥⌘ + . (Control-Option-Command-period) | stop everything |
+
+`click_here_toggle.sh` has no hotkey — it's interactive (reads [space]/[q] from
+its own Terminal window), so run it directly: `./click_here_toggle.sh`.
 
 In the `skhdrc` config the Option (⌥) key is written as the keyword `alt` —
 that's skhd's name for it, not the PC Alt key. Change a hotkey by editing
