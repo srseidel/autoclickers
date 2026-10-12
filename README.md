@@ -58,6 +58,7 @@ Pass the same target dir you installed to, e.g. `./install.sh --uninstall /usr/l
 | `mouse_jiggler_toggle.sh` | Bounce the mouse back and forth. Run to start, run again to stop. |
 | `grid_clicker.sh` | Click through a list of points, one every N seconds, looping. Toggle. |
 | `click_here_toggle.sh` | Left-click wherever the cursor is, once every second, while enabled. Runs in Terminal — press [space] to start/stop, [q] to quit. |
+| `mouse_mover_toggle.sh` | Move the cursor (no clicks) between screen center and a bit to the right, every 5 minutes, while enabled. Runs in Terminal — press [space] to start/stop, [q] to quit. |
 | `coords.sh` | Live cursor-position tracker — hover a spot to read its `x,y`. |
 | `stop_all.sh` | Panic button — kills every clicker/jiggler and clears pidfiles. |
 | `list_privileges.sh` | Read-only audit — lists apps with Accessibility, Input Monitoring, Screen Recording, or Full Disk Access. |
@@ -83,8 +84,9 @@ Defined in [`skhdrc`](./skhdrc) (installed to `~/.config/skhd/skhdrc`):
 | ⌃⌥⌘ + G (Control-Option-Command-G) | toggle grid clicker |
 | ⌃⌥⌘ + . (Control-Option-Command-period) | stop everything |
 
-`click_here_toggle.sh` has no hotkey — it's interactive (reads [space]/[q] from
-its own Terminal window), so run it directly: `./click_here_toggle.sh`.
+`click_here_toggle.sh` and `mouse_mover_toggle.sh` have no hotkey — they're
+interactive (read [space]/[q] from their own Terminal window), so run them
+directly: `./click_here_toggle.sh` or `./mouse_mover_toggle.sh`.
 
 In the `skhdrc` config the Option (⌥) key is written as the keyword `alt` —
 that's skhd's name for it, not the PC Alt key. Change a hotkey by editing

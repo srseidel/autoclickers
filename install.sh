@@ -38,6 +38,7 @@ SCRIPTS=(
     mouse_jiggler_toggle.sh
     grid_clicker.sh
     click_here_toggle.sh
+    mouse_mover_toggle.sh
     stop_all.sh
 )
 
